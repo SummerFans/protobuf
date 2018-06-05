@@ -1573,7 +1573,9 @@ func (g *Generator) goTag(message *Descriptor, field *descriptor.FieldDescriptor
 		if *field.Type == descriptor.FieldDescriptorProto_TYPE_BYTES {
 			name += ",proto3"
 		}
-
+		if *field.Type == descriptor.FieldDescriptorProto_TYPE_STRING {
+			name += ",utf8"
+		}
 	}
 	oneof := ""
 	if field.OneofIndex != nil {

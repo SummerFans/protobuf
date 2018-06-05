@@ -141,6 +141,7 @@ type Properties struct {
 	Enum     string // set for enum types only
 	proto3   bool   // whether this is known to be a proto3 field; set for []byte only
 	oneof    bool   // whether this is a oneof field
+	utf8     bool   // whether this string field should be UTF-8 validated
 
 	Default    string // default value
 	HasDefault bool   // whether an explicit default was provided
@@ -179,6 +180,9 @@ func (p *Properties) String() string {
 	}
 	if p.oneof {
 		s += ",oneof"
+	}
+	if p.utf8 {
+		s += ",utf8"
 	}
 	if len(p.Enum) > 0 {
 		s += ",enum=" + p.Enum
@@ -246,6 +250,8 @@ outer:
 			p.proto3 = true
 		case f == "oneof":
 			p.oneof = true
+		case f == "utf8":
+			p.utf8 = true
 		case strings.HasPrefix(f, "def="):
 			p.HasDefault = true
 			p.Default = f[4:] // rest of string

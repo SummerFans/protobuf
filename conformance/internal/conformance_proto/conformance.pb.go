@@ -157,7 +157,7 @@ type ConformanceRequest_ProtobufPayload struct {
 	ProtobufPayload []byte `protobuf:"bytes,1,opt,name=protobuf_payload,json=protobufPayload,proto3,oneof"`
 }
 type ConformanceRequest_JsonPayload struct {
-	JsonPayload string `protobuf:"bytes,2,opt,name=json_payload,json=jsonPayload,oneof"`
+	JsonPayload string `protobuf:"bytes,2,opt,name=json_payload,json=jsonPayload,utf8,oneof"`
 }
 
 func (*ConformanceRequest_ProtobufPayload) isConformanceRequest_Payload() {}
@@ -301,22 +301,22 @@ type isConformanceResponse_Result interface {
 }
 
 type ConformanceResponse_ParseError struct {
-	ParseError string `protobuf:"bytes,1,opt,name=parse_error,json=parseError,oneof"`
+	ParseError string `protobuf:"bytes,1,opt,name=parse_error,json=parseError,utf8,oneof"`
 }
 type ConformanceResponse_SerializeError struct {
-	SerializeError string `protobuf:"bytes,6,opt,name=serialize_error,json=serializeError,oneof"`
+	SerializeError string `protobuf:"bytes,6,opt,name=serialize_error,json=serializeError,utf8,oneof"`
 }
 type ConformanceResponse_RuntimeError struct {
-	RuntimeError string `protobuf:"bytes,2,opt,name=runtime_error,json=runtimeError,oneof"`
+	RuntimeError string `protobuf:"bytes,2,opt,name=runtime_error,json=runtimeError,utf8,oneof"`
 }
 type ConformanceResponse_ProtobufPayload struct {
 	ProtobufPayload []byte `protobuf:"bytes,3,opt,name=protobuf_payload,json=protobufPayload,proto3,oneof"`
 }
 type ConformanceResponse_JsonPayload struct {
-	JsonPayload string `protobuf:"bytes,4,opt,name=json_payload,json=jsonPayload,oneof"`
+	JsonPayload string `protobuf:"bytes,4,opt,name=json_payload,json=jsonPayload,utf8,oneof"`
 }
 type ConformanceResponse_Skipped struct {
-	Skipped string `protobuf:"bytes,5,opt,name=skipped,oneof"`
+	Skipped string `protobuf:"bytes,5,opt,name=skipped,utf8,oneof"`
 }
 
 func (*ConformanceResponse_ParseError) isConformanceResponse_Result()      {}
@@ -518,14 +518,14 @@ type TestAllTypes struct {
 	OptionalFloat          float32                     `protobuf:"fixed32,11,opt,name=optional_float,json=optionalFloat" json:"optional_float,omitempty"`
 	OptionalDouble         float64                     `protobuf:"fixed64,12,opt,name=optional_double,json=optionalDouble" json:"optional_double,omitempty"`
 	OptionalBool           bool                        `protobuf:"varint,13,opt,name=optional_bool,json=optionalBool" json:"optional_bool,omitempty"`
-	OptionalString         string                      `protobuf:"bytes,14,opt,name=optional_string,json=optionalString" json:"optional_string,omitempty"`
+	OptionalString         string                      `protobuf:"bytes,14,opt,name=optional_string,json=optionalString,utf8" json:"optional_string,omitempty"`
 	OptionalBytes          []byte                      `protobuf:"bytes,15,opt,name=optional_bytes,json=optionalBytes,proto3" json:"optional_bytes,omitempty"`
 	OptionalNestedMessage  *TestAllTypes_NestedMessage `protobuf:"bytes,18,opt,name=optional_nested_message,json=optionalNestedMessage" json:"optional_nested_message,omitempty"`
 	OptionalForeignMessage *ForeignMessage             `protobuf:"bytes,19,opt,name=optional_foreign_message,json=optionalForeignMessage" json:"optional_foreign_message,omitempty"`
 	OptionalNestedEnum     TestAllTypes_NestedEnum     `protobuf:"varint,21,opt,name=optional_nested_enum,json=optionalNestedEnum,enum=conformance.TestAllTypes_NestedEnum" json:"optional_nested_enum,omitempty"`
 	OptionalForeignEnum    ForeignEnum                 `protobuf:"varint,22,opt,name=optional_foreign_enum,json=optionalForeignEnum,enum=conformance.ForeignEnum" json:"optional_foreign_enum,omitempty"`
-	OptionalStringPiece    string                      `protobuf:"bytes,24,opt,name=optional_string_piece,json=optionalStringPiece" json:"optional_string_piece,omitempty"`
-	OptionalCord           string                      `protobuf:"bytes,25,opt,name=optional_cord,json=optionalCord" json:"optional_cord,omitempty"`
+	OptionalStringPiece    string                      `protobuf:"bytes,24,opt,name=optional_string_piece,json=optionalStringPiece,utf8" json:"optional_string_piece,omitempty"`
+	OptionalCord           string                      `protobuf:"bytes,25,opt,name=optional_cord,json=optionalCord,utf8" json:"optional_cord,omitempty"`
 	RecursiveMessage       *TestAllTypes               `protobuf:"bytes,27,opt,name=recursive_message,json=recursiveMessage" json:"recursive_message,omitempty"`
 	// Repeated
 	RepeatedInt32          []int32                       `protobuf:"varint,31,rep,packed,name=repeated_int32,json=repeatedInt32" json:"repeated_int32,omitempty"`
@@ -541,14 +541,14 @@ type TestAllTypes struct {
 	RepeatedFloat          []float32                     `protobuf:"fixed32,41,rep,packed,name=repeated_float,json=repeatedFloat" json:"repeated_float,omitempty"`
 	RepeatedDouble         []float64                     `protobuf:"fixed64,42,rep,packed,name=repeated_double,json=repeatedDouble" json:"repeated_double,omitempty"`
 	RepeatedBool           []bool                        `protobuf:"varint,43,rep,packed,name=repeated_bool,json=repeatedBool" json:"repeated_bool,omitempty"`
-	RepeatedString         []string                      `protobuf:"bytes,44,rep,name=repeated_string,json=repeatedString" json:"repeated_string,omitempty"`
+	RepeatedString         []string                      `protobuf:"bytes,44,rep,name=repeated_string,json=repeatedString,utf8" json:"repeated_string,omitempty"`
 	RepeatedBytes          [][]byte                      `protobuf:"bytes,45,rep,name=repeated_bytes,json=repeatedBytes,proto3" json:"repeated_bytes,omitempty"`
 	RepeatedNestedMessage  []*TestAllTypes_NestedMessage `protobuf:"bytes,48,rep,name=repeated_nested_message,json=repeatedNestedMessage" json:"repeated_nested_message,omitempty"`
 	RepeatedForeignMessage []*ForeignMessage             `protobuf:"bytes,49,rep,name=repeated_foreign_message,json=repeatedForeignMessage" json:"repeated_foreign_message,omitempty"`
 	RepeatedNestedEnum     []TestAllTypes_NestedEnum     `protobuf:"varint,51,rep,packed,name=repeated_nested_enum,json=repeatedNestedEnum,enum=conformance.TestAllTypes_NestedEnum" json:"repeated_nested_enum,omitempty"`
 	RepeatedForeignEnum    []ForeignEnum                 `protobuf:"varint,52,rep,packed,name=repeated_foreign_enum,json=repeatedForeignEnum,enum=conformance.ForeignEnum" json:"repeated_foreign_enum,omitempty"`
-	RepeatedStringPiece    []string                      `protobuf:"bytes,54,rep,name=repeated_string_piece,json=repeatedStringPiece" json:"repeated_string_piece,omitempty"`
-	RepeatedCord           []string                      `protobuf:"bytes,55,rep,name=repeated_cord,json=repeatedCord" json:"repeated_cord,omitempty"`
+	RepeatedStringPiece    []string                      `protobuf:"bytes,54,rep,name=repeated_string_piece,json=repeatedStringPiece,utf8" json:"repeated_string_piece,omitempty"`
+	RepeatedCord           []string                      `protobuf:"bytes,55,rep,name=repeated_cord,json=repeatedCord,utf8" json:"repeated_cord,omitempty"`
 	// Map
 	MapInt32Int32           map[int32]int32                        `protobuf:"bytes,56,rep,name=map_int32_int32,json=mapInt32Int32" json:"map_int32_int32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	MapInt64Int64           map[int64]int64                        `protobuf:"bytes,57,rep,name=map_int64_int64,json=mapInt64Int64" json:"map_int64_int64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
@@ -563,12 +563,12 @@ type TestAllTypes struct {
 	MapInt32Float           map[int32]float32                      `protobuf:"bytes,66,rep,name=map_int32_float,json=mapInt32Float" json:"map_int32_float,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
 	MapInt32Double          map[int32]float64                      `protobuf:"bytes,67,rep,name=map_int32_double,json=mapInt32Double" json:"map_int32_double,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
 	MapBoolBool             map[bool]bool                          `protobuf:"bytes,68,rep,name=map_bool_bool,json=mapBoolBool" json:"map_bool_bool,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	MapStringString         map[string]string                      `protobuf:"bytes,69,rep,name=map_string_string,json=mapStringString" json:"map_string_string,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	MapStringBytes          map[string][]byte                      `protobuf:"bytes,70,rep,name=map_string_bytes,json=mapStringBytes" json:"map_string_bytes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	MapStringNestedMessage  map[string]*TestAllTypes_NestedMessage `protobuf:"bytes,71,rep,name=map_string_nested_message,json=mapStringNestedMessage" json:"map_string_nested_message,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	MapStringForeignMessage map[string]*ForeignMessage             `protobuf:"bytes,72,rep,name=map_string_foreign_message,json=mapStringForeignMessage" json:"map_string_foreign_message,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	MapStringNestedEnum     map[string]TestAllTypes_NestedEnum     `protobuf:"bytes,73,rep,name=map_string_nested_enum,json=mapStringNestedEnum" json:"map_string_nested_enum,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=conformance.TestAllTypes_NestedEnum"`
-	MapStringForeignEnum    map[string]ForeignEnum                 `protobuf:"bytes,74,rep,name=map_string_foreign_enum,json=mapStringForeignEnum" json:"map_string_foreign_enum,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=conformance.ForeignEnum"`
+	MapStringString         map[string]string                      `protobuf:"bytes,69,rep,name=map_string_string,json=mapStringString" json:"map_string_string,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"bytes,2,opt,name=value,utf8"`
+	MapStringBytes          map[string][]byte                      `protobuf:"bytes,70,rep,name=map_string_bytes,json=mapStringBytes" json:"map_string_bytes,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	MapStringNestedMessage  map[string]*TestAllTypes_NestedMessage `protobuf:"bytes,71,rep,name=map_string_nested_message,json=mapStringNestedMessage" json:"map_string_nested_message,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"bytes,2,opt,name=value"`
+	MapStringForeignMessage map[string]*ForeignMessage             `protobuf:"bytes,72,rep,name=map_string_foreign_message,json=mapStringForeignMessage" json:"map_string_foreign_message,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"bytes,2,opt,name=value"`
+	MapStringNestedEnum     map[string]TestAllTypes_NestedEnum     `protobuf:"bytes,73,rep,name=map_string_nested_enum,json=mapStringNestedEnum" json:"map_string_nested_enum,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"varint,2,opt,name=value,enum=conformance.TestAllTypes_NestedEnum"`
+	MapStringForeignEnum    map[string]ForeignEnum                 `protobuf:"bytes,74,rep,name=map_string_foreign_enum,json=mapStringForeignEnum" json:"map_string_foreign_enum,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"varint,2,opt,name=value,enum=conformance.ForeignEnum"`
 	// Types that are valid to be assigned to OneofField:
 	//	*TestAllTypes_OneofUint32
 	//	*TestAllTypes_OneofNestedMessage
@@ -659,7 +659,7 @@ type TestAllTypes_OneofNestedMessage struct {
 	OneofNestedMessage *TestAllTypes_NestedMessage `protobuf:"bytes,112,opt,name=oneof_nested_message,json=oneofNestedMessage,oneof"`
 }
 type TestAllTypes_OneofString struct {
-	OneofString string `protobuf:"bytes,113,opt,name=oneof_string,json=oneofString,oneof"`
+	OneofString string `protobuf:"bytes,113,opt,name=oneof_string,json=oneofString,utf8,oneof"`
 }
 type TestAllTypes_OneofBytes struct {
 	OneofBytes []byte `protobuf:"bytes,114,opt,name=oneof_bytes,json=oneofBytes,proto3,oneof"`

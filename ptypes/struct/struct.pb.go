@@ -54,7 +54,7 @@ func (NullValue) XXX_WellKnownType() string { return "NullValue" }
 // The JSON representation for `Struct` is JSON object.
 type Struct struct {
 	// Unordered map of dynamically typed values.
-	Fields               map[string]*Value `protobuf:"bytes,1,rep,name=fields" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Fields               map[string]*Value `protobuf:"bytes,1,rep,name=fields" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key,utf8" protobuf_val:"bytes,2,opt,name=value"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -150,7 +150,7 @@ type Value_NumberValue struct {
 	NumberValue float64 `protobuf:"fixed64,2,opt,name=number_value,json=numberValue,oneof"`
 }
 type Value_StringValue struct {
-	StringValue string `protobuf:"bytes,3,opt,name=string_value,json=stringValue,oneof"`
+	StringValue string `protobuf:"bytes,3,opt,name=string_value,json=stringValue,utf8,oneof"`
 }
 type Value_BoolValue struct {
 	BoolValue bool `protobuf:"varint,4,opt,name=bool_value,json=boolValue,oneof"`

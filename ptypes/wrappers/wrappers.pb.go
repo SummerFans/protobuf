@@ -324,7 +324,7 @@ func (m *BoolValue) GetValue() bool {
 // The JSON representation for `StringValue` is JSON string.
 type StringValue struct {
 	// The string value.
-	Value                string   `protobuf:"bytes,1,opt,name=value" json:"value,omitempty"`
+	Value                string   `protobuf:"bytes,1,opt,name=value,utf8" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
